@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Agent signup</title>
+    </head>
+
+    <body>
+        <center>
+            <form name="Agent" method="post" action="../AgentSignup/">
+                {% csrf_token %}
+                <h1>Sing up as Agent</h1>
+                <div class="form-row">
+                    <label for="nameAgent">Name:</label>
+                    <input type="text" id="nameAgent" name="nameAgent" required>
+                </div>
+                <div class="form-row">
+                    <label for="contactAgent">Contact number: </label>
+                    <input type="text" id="contactAgent" name="contactAgent" required>
+                </div>
+                <div class="form-row">
+                    <label for="mailAgent">E-mail: </label>
+                    <input type="text" id="mailAgent" name="mailAgent" required>
+                </div>
+                <div class="form-row">
+                    <label for="companyAgent">Company:</label>
+                    <input type="company" id="companyAgent" name="companyAgent" required>
+                </div>
+                <button type="submit" name="loginAgent">Sing in</button>
+            </form>
+
+        </center>
+    </body>
+</html>

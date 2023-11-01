@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Worker signup</title>
+    </head>
+
+    <body>
+        <center>
+            <form name="worker" method="post" action="../workerSignup/">
+                {% csrf_token %}
+                <h1>Sing up as Worker</h1>
+                <div class="form-row">
+                    <label for="nameWorker">Name:</label>
+                    <input type="text" id="nameWorker" name="nameWorker" required>
+                </div>
+                <div class="form-row">
+                    <label for="contactWorker">Contact number: </label>
+                    <input type="text" id="contactWorker" name="contactWorker" required>
+                </div>
+                <div class="form-row">
+                    <label for="mailWorker">E-mail: </label>
+                    <input type="text" id="mailWorker" name="mailWorker" required>
+                </div>
+              
+                <div class="form-row">
+                    <label for="passwordWorker">Password:</label>
+                    <input type="password" id="passwordWorker" name="passwordWorker" required>
+                </div>
+                <button type="submit" name="loginWorker">Sing in</button>
+            </form>
+
+        </center>
+    </body>
+</html>

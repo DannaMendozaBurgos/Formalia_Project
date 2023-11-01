@@ -2,7 +2,8 @@ from django.db import models
 
 
 class Agent(models.Model):
-    idAgent = models.IntegerField(primary_key=True)
+    
+    id = models.AutoField(primary_key=True, db_column='idAgent')
     nameAgent = models.CharField(max_length=45)
     contactAgent = models.CharField(max_length=45)
     mailAgent = models.CharField(max_length=45)
@@ -12,18 +13,18 @@ class Agent(models.Model):
         db_table = 'Agent'
 
 class Worker(models.Model):
-    idWorker = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True, db_column='idWorker')
     nameWorker = models.CharField(max_length=45)
     contactWorker = models.CharField(max_length=45)
     mailWorker = models.EmailField()
     passwordWorker = models.CharField(max_length=45)
-    agent = models.ForeignKey(Agent, on_delete=models.DO_NOTHING)
+    agent = models.ForeignKey(Agent, on_delete=models.DO_NOTHING, db_column='Agent_idAgent')
     class Meta:
         managed = False
         db_table = 'Worker'
 
 class Employer(models.Model):
-    idEmployer = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True, db_column='idEmployer')
     nameEmployer = models.CharField(max_length=45)
     contactEmployer = models.CharField(max_length=45)
     mailEmployer = models.CharField(max_length=45)
@@ -39,7 +40,7 @@ type_contract = [
 ]        
 
 class Contract(models.Model):
-    idContract = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True, db_column='idContract')
     typeContract = models.CharField(max_length=20, choices=type_contract)
     startdate = models.DateField()
     finishdate = models.DateField()
@@ -52,17 +53,17 @@ class Contract(models.Model):
         db_table = 'Contract'
 
 class Work(models.Model):
-    idWork = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True, db_column='idWork')
     titleWork = models.CharField(max_length=45)
     dateWork = models.DateField()
     descriptionWork = models.TextField()
-    worker = models.ForeignKey(Worker, on_delete=models.CASCADE)
+    worker = models.ForeignKey(Worker, on_delete=models.CASCADE, db_column='Worker_idWorker')
     class Meta:
         managed = False
         db_table = 'Work'
 
 class Education(models.Model):
-    idEducation = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True, db_column='idEducation')
     titleEducation = models.CharField(max_length=45)
     descriptionEducation = models.TextField()
     institution = models.CharField(max_length=45)
@@ -72,7 +73,7 @@ class Education(models.Model):
         db_table = 'Education'
 
 class Experience(models.Model):
-    idEducation = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True, db_column='idExperience')
     titleExperience = models.CharField(max_length=45)
     descriptionExperience = models.TextField()
     companyExperience = models.CharField(max_length=45)

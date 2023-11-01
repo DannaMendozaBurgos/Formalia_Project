@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>New work</title>
+    </head>
+
+    <body>
+        <center>
+            <form name="worker" method="post" action="../newWork/">
+                {% csrf_token %}
+                <h1>Insert work</h1>
+                <div class="form-row">
+                    <label for="titleWork">Title:</label>
+                    <input type="text" id="titleWork" name="titleWork" required>
+                </div>
+                <div class="form-row">
+                    <label for="dateWork">Date: </label>
+                    <input type="text" id="dateWork" name="dateWork" required>
+                    <p>Format Y-M-D</p>
+                </div>
+                <div class="form-row">
+                    <label for="descriptionWork">description:</label>
+                    <input type="text" id="descriptionWork" name="descriptionWork" required>
+                </div>
+                <button type="submit" name="newWork">Submit</button>
+            </form>
+
+        </center>
+    </body>
+</html>

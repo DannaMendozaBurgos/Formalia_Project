@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de registro</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend básico de log in</title>
+    <style>
+    body {
+        
+      background-image: url('imagesss/fotodefondo.avif'); /* Asegúrate de usar la extensión de archivo correcta, por ejemplo: .jpg, .png, etc. */
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover; /* Esto ayuda a escalar la imagen para que cubra todo el fondo */
+    }        
+        /* Estilos CSS aquí */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            width: 300px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        input[type="submit"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .email-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .email-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        /* Estilos para los botones de las áreas de trabajo */
+        .button-container button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .button-container button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    
+</head>
+<body>
+
+<h2>Formulario de Registro</h2>
+
+<form id="registroForm" action="index.html" method="post">
+  <div>
+    <label for="username">Nombre de Usuario:</label><br>
+    <input type="text" id="username" name="username" required><br><br>
+  </div>
+  <div>
+    <label for="password">Contraseña:</label><br>
+    <input type="password" id="password" name="password" required><br><br>
+  </div>
+  <div>
+    <input type="submit" value="Registrarse">
+  </div>
+</form>
+
+<script>
+    document.getElementById('registroForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Evita el comportamiento predeterminado de enviar el formulario
+        // Aquí puedes agregar lógica adicional si es necesario antes de redirigir
+        window.location.href = "index.html" + "?username=" + document.getElementById('username').value + "&password=" + document.getElementById('password').value;
+    });
+</script>
+
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agent sign up</title>
+    <title>Employer sign up</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
@@ -27,29 +27,32 @@
 </head>
 <body>
     <div class="container">
-        <h1>Signup as agent</h1>
+        <h1>Signup as Employer</h1>
         <center>
-            <form name="Agent" method="post" action="../AgentSignup/">
+            <form name="worker" method="post" action="../EmployerSignup/">
                 {% csrf_token %}
                 <div class="form-group">
-                    <label for="nameAgent">Name:</label>
-                    <input type="text" id="nameAgent" name="nameAgent" required>
-               
+                    <label for="nameEmployer">Name:</label>
+                    <input type="text" id="nameEmployer" name="nameEmployer" required>
                 </div>
                 <div class="form-group">
-                    <label for="contactAgent">Contact number: </label>
-                    <input type="text" id="contactAgent" name="contactAgent" required>
+                    <label for="contactEmployer">Contact number: </label>
+                    <input type="text" id="contactEmployer" name="contactEmployer" required>
                 </div>
                 <div class="form-group">
-                    <label for="mailAgent">E-mail: </label>
-                    <input type="text" id="mailAgent" name="mailAgent" required>
+                    <label for="mailEmployer">E-mail: </label>
+                    <input type="text" id="mailEmployer" name="mailEmployer" required>
                 </div>
                 <div class="form-group">
-                    <label for="companyAgent">Company:</label>
-                    <input type="company" id="companyAgent" name="companyAgent" required>
+                    <label for="companyEmployer">Company: </label>
+                    <input type="text" id="companyEmployer" name="companyEmployer" required>
                 </div>
-                
-                <button type="submit" name="loginAgent">Sing in</button>
+                <div class="form-group">
+                    <label for="passwordEmployer">Password:</label>
+                    <input type="password" id="passwordEmployer" name="passwordEmployer" required>
+                </div>
+
+                <button type="submit" name="loginEmployer">Sing in</button>
            </form>
         </center> 
     </div>

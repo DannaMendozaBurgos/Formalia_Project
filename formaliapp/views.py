@@ -5,9 +5,11 @@ from django.http import HttpResponse
 from .models import *
 import random
 from datetime import datetime
+from django.shortcuts import get_object_or_404
+
 
 def home(request):
-    return render(request,'home.html')
+    return render(request,'index.html')
 
 def workerSignup(request):
     agents = Agent.objects.all()
@@ -25,7 +27,7 @@ def workerSignup(request):
                     agent = vagent,
                     )
         worker.save()
-    return render(request, 'workerSignup.html')
+    return render(request, 'WorkerSignup.html')
 
 def EmployerSignup(request):
     if request.method == 'POST':
@@ -133,7 +135,7 @@ def newWork(request):
         
             dateWork = None
         vworker = random.choice(worker)
-        work = Worker(titleWork= vtitleWork,
+        work = Work(titleWork= vtitleWork,
                     descriptionWork= vdescriptionWork,
                     dateWork=dateWork,
                     worker = vworker,
@@ -142,3 +144,40 @@ def newWork(request):
         
 
     return render(request, 'setWork.html')
+
+def newContract(request):
+   
+    employers = Employer.objects.all()
+    type_contract_choices = [('Service', 'Service'), ('Limit', 'Limit')]
+    workers = Worker.objects.all()
+    
+    if request.method == 'POST':
+        vtype = request.POST.get('typeContract','')
+        vstart = request.POST.get('startdate','')
+        vfinish = request.POST.get('finishdate','')
+        vdescription = request.POST.get('descriptionContract','')
+        vfare = request.POST.get('fareContract','')
+        vworker_id = request.POST.get('worker', '')  # Get the worker ID
+        vemployer_id = request.POST.get('employer', '')  # Get the employer ID
+
+        vstart = datetime.strptime(vstart, '%Y-%m-%d').date()
+        vfinish = datetime.strptime(vfinish, '%Y-%m-%d').date()
+        #vworker = Worker.objects.get(pk=vworker)
+        #vemployer = Employer.objects.get(pk=vemployer)
+
+        vworker = get_object_or_404(Worker, pk=vworker_id)
+        vemployer = get_object_or_404(Employer, pk=vemployer_id)
+
+        contract = Contract(typeContract = vtype,
+                            startdate=vstart,
+                            finishdate=vfinish,
+                            descriptionContract = vdescription,
+                            fareContract = vfare,
+                            worker = vworker,
+                            employer = vemployer
+        )
+
+        contract.save()
+
+    return render(request, 'Contract.html', {'type_contract_choices': type_contract_choices,'workers': workers,
+        'employers': employers})

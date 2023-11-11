@@ -13,7 +13,7 @@ class Agent(models.Model):
         db_table = 'Agent'
 
 class Worker(models.Model):
-    id = models.AutoField(primary_key=True, db_column='idWorker')
+    id = models.AutoField(primary_key=True, db_column='idWoker')
     nameWorker = models.CharField(max_length=45)
     contactWorker = models.CharField(max_length=45)
     mailWorker = models.EmailField()
@@ -45,9 +45,9 @@ class Contract(models.Model):
     startdate = models.DateField()
     finishdate = models.DateField()
     fareContract = models.IntegerField()
-    descriptionContract = models.TextField()
-    worker = models.ForeignKey(Worker,on_delete=models.CASCADE)
-    employer = models.ForeignKey(Employer,on_delete=models.CASCADE)
+    descriptionContract = models.TextField()    
+    worker = models.ForeignKey(Worker,on_delete=models.CASCADE, db_column='Worker_idWoker')
+    employer = models.ForeignKey(Employer,on_delete=models.CASCADE,db_column='Employer_idEmployer')
     class Meta:
         managed = False
         db_table = 'Contract'
@@ -57,7 +57,7 @@ class Work(models.Model):
     titleWork = models.CharField(max_length=45)
     dateWork = models.DateField()
     descriptionWork = models.TextField()
-    worker = models.ForeignKey(Worker, on_delete=models.CASCADE, db_column='Worker_idWorker')
+    worker = models.ForeignKey(Worker, on_delete=models.CASCADE, db_column='Worker_idWoker')
     class Meta:
         managed = False
         db_table = 'Work'
